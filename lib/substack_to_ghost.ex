@@ -10,6 +10,7 @@ defmodule SubstackToGhost do
     |> Enum.map(fn {title, html_path} -> build_card(title, html_path) end)
     |> build_mobiledoc()
     |> Jason.encode!()
+    |> write_file()
   end
 
   @doc """
@@ -63,4 +64,6 @@ defmodule SubstackToGhost do
   defp concat_path(path, file_name) do
     path <> "/" <> file_name
   end
+
+  defp write_file(content), do: File.write("ghost_import.json", content)
 end
