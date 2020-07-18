@@ -6,7 +6,7 @@ Requires Erlang installed.
 
 For now, just slams html into mobiledoc cards. 
 WIP. Todo: 
-    - better option parsing
-    - standalone executable? 
-    - test cards vs other mobiledoc options
+- better option parsing
+- standalone executable? 
+- test cards vs other mobiledoc options
 
