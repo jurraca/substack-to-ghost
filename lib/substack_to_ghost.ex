@@ -9,7 +9,7 @@ defmodule SubstackToGhost do
     |> Enum.map(fn item -> {extract_title(item), item} end)
     |> Enum.map(fn {title, html_path} -> build_card(title, html_path) end)
     |> build_mobiledoc()
-    |> Jason.encode!
+    |> Jason.encode!()
   end
 
   @doc """
@@ -17,10 +17,10 @@ defmodule SubstackToGhost do
   Returns a list of html files from that folder.
   """
   def read_export_folder(path) do
-    abs = path |> Path.expand
+    abs = path |> Path.expand()
 
     abs
-    |> File.ls!
+    |> File.ls!()
     |> Enum.filter(fn file_name -> is_html?(file_name) end)
     |> Enum.map(fn file_name -> concat_path(abs, file_name) end)
   end
@@ -32,7 +32,7 @@ defmodule SubstackToGhost do
       atoms: [],
       cards: cards,
       sections: []
-  }
+    }
   end
 
   @doc """
@@ -46,7 +46,7 @@ defmodule SubstackToGhost do
   end
 
   def build_card(title, html_path) do
-    ["html", %{"cardName" => title, "html"=> read_html(html_path)}]
+    ["html", %{"cardName" => title, "html" => read_html(html_path)}]
   end
 
   defp extract_title(file_name) do
